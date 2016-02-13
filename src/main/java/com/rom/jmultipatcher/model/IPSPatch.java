@@ -5,10 +5,6 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author clone
- */
 public class IPSPatch {
 
     private byte[] PATCH_BYTES = new byte[]{0x50, 0x41, 0x54, 0x43, 0x48};
@@ -49,7 +45,8 @@ public class IPSPatch {
         int offset = 5;
         for (byte[] byteArr : records) {
 
-            Utils.concatByteArray(dataBB, byteArr, data.array().length, offset);
+                    System.arraycopy(byteArr, 0, dataBB, offset, byteArr.length);
+    
             offset += byteArr.length;
         }
 

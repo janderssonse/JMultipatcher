@@ -107,6 +107,9 @@ public class MainController implements Initializable {
                 if (patchActionType == PatchActionType.APPLY) {
                     patcher.applyPatch(fileManager);
                 } else {
+                    fileManager.setPatchfilepath(outputfileTextfield.getText());
+                    fileManager.setSourcefilepath(patchfileTextfield.getText());
+                    fileManager.setTargetfilepath(sourcefileTextfield.getText());
                     patcher.createPatch(fileManager);
                 }
                 actionText.setFill(Color.DARKGREEN);
@@ -287,7 +290,7 @@ public class MainController implements Initializable {
     }
 
     private PatchType getSelectedPatchType() {
-         String toUpperCase = patchTypeChBox.getSelectionModel().getSelectedItem().toString().toUpperCase();
+        String toUpperCase = patchTypeChBox.getSelectionModel().getSelectedItem().toString().toUpperCase();
         return PatchType.valueOf(toUpperCase);
     }
 

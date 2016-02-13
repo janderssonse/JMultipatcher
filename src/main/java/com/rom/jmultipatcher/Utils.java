@@ -117,9 +117,14 @@ public enum Utils {
     }
 
     public static byte[] concatByteArray(final byte[] one, final byte[] two, int size, int offset) {
-        byte[] combined = new byte[size];
+        byte[] combined = null;
+        try {
+          combined = new byte[size];
         System.arraycopy(one, 0, combined, offset, one.length);
         System.arraycopy(two, 0, combined, one.length + offset, two.length);
+        }  catch (Exception e){
+            throw e;
+        }
         return combined;
     }
 

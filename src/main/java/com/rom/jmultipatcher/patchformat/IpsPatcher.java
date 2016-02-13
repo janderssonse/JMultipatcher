@@ -24,6 +24,8 @@ import com.rom.jmultipatcher.model.IPSPatch;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -117,8 +119,8 @@ public class IpsPatcher implements IPatcher {
     public void createPatch(FileManagerModel fileManager) {
         try {
             IPSPatch patch = new IPSPatch();
-            RandomAccessFile sourcefile = new RandomAccessFile(fileManager.getPatchfilepath(), "r");
-            RandomAccessFile targetfile = new RandomAccessFile(fileManager.getSourcefilepath(), "r");
+            RandomAccessFile sourcefile = new RandomAccessFile(fileManager.getSourcefilepath(), "r");
+            RandomAccessFile targetfile = new RandomAccessFile(fileManager.getTargetfilepath(), "r");
             fileManager.setSourcefile(sourcefile);
             fileManager.setTargetfile(targetfile);
 
@@ -126,40 +128,34 @@ public class IpsPatcher implements IPatcher {
             targetfile.seek(0);
 
             long length = fileManager.getSourcefile().length();
-            for (int i = 0; i < length; i++) {
+            for (int fileBytePos = 0; fileBytePos < length; fileBytePos++) {
                 // Difference found.  Find where they stop being different.
                 if (sourcefile.read() != targetfile.read()) {
-                    long filePointer = fileManager.getSourcefile().getFilePointer();
-                    long filePointer1 = fileManager.getTargetfile().getFilePointer();
-                    int j = i;
-                    int startingOffset = j;
-                    int endingOffset = j;
+                           
+                    int endingOffset = fileBytePos;
                     do {
-                        endingOffset = ++j;
-                    } while (i < length && sourcefile.read() != targetfile.read());
+                        endingOffset = ++endingOffset;
+                    } while (fileBytePos < length && sourcefile.read() != targetfile.read());//todo: safer check
 
-                    int recNrOfBytes = endingOffset - startingOffset;
+                    int recNrOfBytes = endingOffset - fileBytePos;
                     ByteBuffer startingOffsetBB = ByteBuffer.allocate(4);
-                    startingOffsetBB.putInt(startingOffset);
+                    startingOffsetBB.putInt(fileBytePos);
                     ByteBuffer recSizeBB = ByteBuffer.allocate(recNrOfBytes);
 
-                    fileManager.getSourcefile().seek(i);
-
-                    long filePointer3 = fileManager.getSourcefile().getFilePointer();
-                    long filePointer13 = fileManager.getTargetfile().getFilePointer();
+                    fileManager.getSourcefile().seek(fileBytePos);
                     fileManager.getSourcefile().read(recSizeBB.array());
 
                     patch.addRecord(startingOffsetBB.array(), recSizeBB.array());
 
                     //reset pointers to start looking for next record
-                    fileManager.getSourcefile().seek(fileManager.getTargetfile().getFilePointer());
-                    i = (int) fileManager.getTargetfile().getFilePointer();
-                    //   patch.AddRecord(startingOffset, recSize,
-                    //   ModifiedRom.data.Skip(startingOffset).Take(recSize).ToArray());
+                    fileBytePos = fileBytePos + recNrOfBytes;
+                    fileManager.getSourcefile().seek(fileBytePos + recNrOfBytes);
+                    fileManager.getTargetfile().seek(fileBytePos + recNrOfBytes);
                 }
             }
             
-            patch.toByteArray();
+            ;
+            Files.write(Paths.get(fileManager.getPatchfilepath()), patch.toByteArray());
 
         } catch (IOException ex) {
             Logger.getLogger(IpsPatcher.class.getName()).log(Level.SEVERE, null, ex);

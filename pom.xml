@@ -11,8 +11,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-       <!-- <mainClass>com.rom.jmultipatcher.gui.javafx</mainClass>-->
-    <mainClass>com.rom.jmultipatcher.gui.cmd.CommandLineMain</mainClass>
+    <mainClass>com.rom.jmultipatcher.gui.javafx.JMultipatcherMain</mainClass>
+      <!--  <mainClass>com.rom.jmultipatcher.gui.cmd.CommandLineMain</mainClass> -->
 
         <compileSource>1.8</compileSource>
     </properties>
