@@ -40,7 +40,7 @@ public class CommandLineMain {
             fileManager.setTargetfilepath(cmd.getOptionValue(TARGET_ROM_PATH, ""));
 
             String extension = FilenameUtils.getExtension(cmd.getOptionValue(PATH_ROM_PATH, ""));
-            PatchType patchType = PatchType.valueOf(extension);
+            PatchType patchType = PatchType.valueOf(extension.toUpperCase());
             IPatcher patcher = PatcherFactory.INSTANCE.buildPatcher(patchType);
 
             if (cmd.getOptionValue(MODE).equalsIgnoreCase("apply")) {
