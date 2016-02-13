@@ -16,21 +16,31 @@
  You should have received a copy of the GNU General Public License
  along with JMultiPatcher.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.rom.jmultipatcher;
+package com.rom.jmultipatcher.gui.javafx;
 
-public enum PatchType {
+import com.rom.jmultipatcher.patchformat.IPatcher;
+import com.rom.jmultipatcher.patchformat.IpsPatcher;
+import com.rom.jmultipatcher.patchformat.UpsPatcher;
 
-    IPS("ips"),
-    UPS("ups");
-
-    private final String patchType; //NOPMD
-
-    private PatchType(final String patchType) {
-        this.patchType = patchType;
-    }
+public enum PatcherFactory {
     
-    public String getPatchType(){
-        return patchType;
+    INSTANCE;
+    
+    public IPatcher buildPatcher(final PatchType patchtype) {
+        IPatcher patcher = null;
+        switch (patchtype) {
+            case IPS:
+                patcher = new IpsPatcher();
+                break;
+
+            case UPS:
+                patcher = new UpsPatcher();
+                break;
+            default:
+                // throw some exception
+                break;
+        }
+        return patcher;
     }
 
 }

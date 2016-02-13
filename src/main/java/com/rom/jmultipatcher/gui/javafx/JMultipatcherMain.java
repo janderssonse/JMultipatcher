@@ -1,5 +1,5 @@
 /* JMultiPatcher - yet another rompatcher utility
- Copyright © 2014 Josef Andersson <josef.andersson@fripost.org>
+ Copyright © 2014 - 2016 Josef Andersson <josef.andersson@fripost.org>
 
  This file is part of JMultiPatcher.
 
@@ -16,7 +16,7 @@
  You should have received a copy of the GNU General Public License
  along with JMultiPatcher.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.rom.jmultipatcher;
+package com.rom.jmultipatcher.gui.javafx;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
@@ -39,7 +39,6 @@ public class JMultipatcherMain extends Application {
 
         setupLogfile();
         setupStage(stage);
-
     }
 
     private void setupStage(final Stage stage) throws IOException {

@@ -19,6 +19,7 @@
 package com.rom.jmultipatcher.model;
 
 import java.io.RandomAccessFile;
+ 
 
 public class FileManagerModel {
 
@@ -30,14 +31,14 @@ public class FileManagerModel {
     private RandomAccessFile targetfile;
     private RandomAccessFile patchfile;
 
-    private final CrcModel crcModel;
-    private final SizeModel sizeModel;
+    private  CrcModel crcModel;
+    private  SizeModel sizeModel;
 
     public FileManagerModel(final CrcModel crcModel, final SizeModel sizeModel) {
         this.crcModel = crcModel;
         this.sizeModel = sizeModel;
     }
-
+  
     public String getSourcefilepath() {
         return sourcefilepath;
     }

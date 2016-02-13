@@ -18,6 +18,7 @@
  */
 package com.rom.jmultipatcher;
 
+import com.rom.jmultipatcher.gui.javafx.PatchType;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

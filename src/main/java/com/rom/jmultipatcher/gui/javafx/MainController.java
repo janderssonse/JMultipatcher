@@ -16,8 +16,9 @@
  You should have received a copy of the GNU General Public License
  along with JMultiPatcher.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.rom.jmultipatcher;
+package com.rom.jmultipatcher.gui.javafx;
 
+import com.rom.jmultipatcher.Utils;
 import com.rom.jmultipatcher.model.CrcModel;
 import com.rom.jmultipatcher.model.FileManagerModel;
 import com.rom.jmultipatcher.model.SizeModel;

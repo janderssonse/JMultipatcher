@@ -16,16 +16,16 @@
  You should have received a copy of the GNU General Public License
  along with JMultiPatcher.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.rom.jmultipatcher;
+package com.rom.jmultipatcher.gui.javafx;
 
-public enum PatchActionType {
+public enum PatchType {
 
-    APPLY("Apply a patch"),
-    CREATE("Create a patch");
+    IPS("ips"),
+    UPS("ups");
 
     private final String patchType; //NOPMD
 
-    private PatchActionType(final String patchType) {
+    private PatchType(final String patchType) {
         this.patchType = patchType;
     }
     
