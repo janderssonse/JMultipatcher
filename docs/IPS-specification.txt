@@ -1,0 +1,25 @@
+IPS-format specification:
+http://zerosoft.zophar.net/ips.htm">zerosoft.zophar.net</a>.
+
+IPS-Restrictions:
+
+File maxsize is 2^24-1 bits (2047 Mb)
+Patch maxsize 2^16-1 bits (7.99 Mb)
+Values in big endian
+
+HeaderSignature:   5 bytes = "PATCH"
+EOF: 3 bytes = "EOF"
+
+
+Standard Record:
+Offset   3 bytes
+Size     2 bytes
+Data     Size number of bytes
+
+RLE Compressed Record
+Offset   3 bytes
+Size     2 bytes       (Size 0 identifies a RLE record)
+RLE_Size 2 bytes
+Value    1 byte         value to repeat RLE_Size times
+ 
+ 

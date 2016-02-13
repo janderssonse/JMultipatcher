@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:id="root" alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" vgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rom.jmultipatcher.MainController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+<ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" prefWidth="150.0" />
+  </columnConstraints>
+  <rowConstraints>
+<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+<padding>
+<Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+</padding>
+<children><Label fx:id="patchfileLabel" text="Patch file: " GridPane.rowIndex="2" /><Label fx:id="romfileLabel" text="Rom file: " GridPane.rowIndex="3" /><Label fx:id="outputLabel" text="Output file: " GridPane.rowIndex="4" /><RadioButton mnemonicParsing="false" selected="true" text="Apply a patch">
+         <toggleGroup>
+            <ToggleGroup fx:id="patchActionChoiceToogleGroup" />
+         </toggleGroup></RadioButton><RadioButton mnemonicParsing="false" text="Create a patch" toggleGroup="$patchActionChoiceToogleGroup" GridPane.columnIndex="1" /><Separator prefHeight="1.0" prefWidth="177.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="TOP" /><Button fx:id="patchfileButton" mnemonicParsing="false" onAction="#selectPatchfileOnClick" prefHeight="26.0" prefWidth="190.0" text="Select a patch file..." GridPane.columnIndex="3" GridPane.rowIndex="2" /><Button fx:id="romfileButton" mnemonicParsing="false" onAction="#selectRomToPatchOnClick" prefHeight="26.0" prefWidth="188.0" text="Select rom to patch..." GridPane.columnIndex="3" GridPane.rowIndex="3" /><TextField id="patchfileTextfield" fx:id="patchfileTextfield" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" /><TextField fx:id="sourcefileTextfield" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" /><TextField fx:id="outputfileTextfield" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" /><HBox alignment="BASELINE_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" /><Label text="Patch type" GridPane.rowIndex="6" /><ChoiceBox fx:id="patchTypeChBox" minWidth="-Infinity" prefWidth="140.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Text fx:id="actionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Actiontext" wrappingWidth="461.7294921875" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+      <Button mnemonicParsing="false" onAction="#patchButtonOnClick" prefHeight="41.0" prefWidth="213.0" text="Patch!" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+</children>
+</GridPane>

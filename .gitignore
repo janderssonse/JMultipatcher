@@ -1,0 +1,6 @@
+target/
+*.log
+nbactions*.*
+*.lck
+*~
+*.pdf
